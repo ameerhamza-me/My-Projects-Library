@@ -225,10 +225,6 @@ a:focus-visible {
   margin-top: auto;
 }
 
-.settings-item {
-  min-height: 38px;
-}
-
 .sidebar-caption {
   display: flex;
   align-items: center;
@@ -423,122 +419,13 @@ a:focus-visible {
   padding: 0 25px 19px;
 }
 
-.category-section {
-  position: relative;
-  z-index: 2;
-  margin-top: -15px;
-}
-
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid #e8e5d7;
-  border-radius: 15px;
-  background: rgba(255, 253, 247, .97);
-  box-shadow: 0 8px 25px rgba(39, 58, 39, .065);
-}
-
-.category-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 9px;
-  min-width: 0;
-  min-height: 112px;
-  padding: 13px 12px 12px;
-  border: 1px solid #e9e6d9;
-  border-radius: 10px;
-  background: #fffdf7;
-  color: var(--text);
-  text-align: left;
-  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
-}
-
-.category-card:hover {
-  transform: translateY(-3px);
-  border-color: #c9d8bd;
-  background: #fffef9;
-  box-shadow: 0 8px 16px rgba(40, 63, 43, .07);
-}
-
-.category-icon {
-  display: grid;
-  width: 31px;
-  height: 31px;
-  flex-shrink: 0;
-  place-items: center;
-  border-radius: 9px;
-  font-size: 14px;
-}
-
-.icon-code {
-  background: #dfeade;
-  color: #245a41;
-}
-
-.icon-design {
-  background: #eee8d5;
-  color: #866b42;
-}
-
-.icon-productivity {
-  background: #e9ecd6;
-  color: #6d7f4d;
-}
-
-.icon-learning {
-  background: #e3e9d9;
-  color: #4c7253;
-}
-
-.category-info {
-  display: grid;
-  gap: 2px;
-  width: 100%;
-  min-width: 0;
-}
-
-.category-info strong {
-  overflow-wrap: anywhere;
-  color: #2b4334;
-  font-family: "Manrope", sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 1.4;
-}
-
-.category-info small {
-  overflow-wrap: anywhere;
-  color: #7e8877;
-  font-size: 9px;
-  line-height: 1.45;
-}
-
-.category-arrow {
-  position: absolute;
-  top: 14px;
-  right: 12px;
-  color: #a3ad99;
-  font-size: 9px;
-  opacity: 0;
-  transition: opacity .2s ease, transform .2s ease;
-}
-
-.category-card:hover .category-arrow {
-  opacity: 1;
-  transform: translate(1px, -1px);
-}
-
 .stats {
   display: none;
 }
 
 .library {
   min-width: 0;
-  margin-top: 20px;
+  margin-top: 23px;
   scroll-margin-top: 20px;
 }
 
@@ -741,7 +628,7 @@ a:focus-visible {
   line-height: 1.6;
   overflow-wrap: anywhere;
   -webkit-box-orient: vertical;
-  
+  -webkit-line-clamp: 2;
 }
 
 .category-tag {
@@ -1089,16 +976,6 @@ a:focus-visible {
   .resource-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
-  .category-grid {
-    gap: 8px;
-    padding: 10px;
-  }
-
-  .category-card {
-    padding-right: 9px;
-    padding-left: 9px;
-  }
 }
 
 @media (max-width: 850px) {
@@ -1120,15 +997,6 @@ a:focus-visible {
 
   .hero h1 {
     font-size: 31px;
-  }
-
-  .category-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .category-card {
-    min-height: 101px;
-    padding: 11px;
   }
 
   .resource-grid {
@@ -1182,8 +1050,7 @@ a:focus-visible {
   }
 
   .sidebar-botanical,
-  .sidebar-caption,
-  .settings-item {
+  .sidebar-caption {
     display: none;
   }
 
@@ -1255,38 +1122,8 @@ a:focus-visible {
     padding: 0 12px 15px;
   }
 
-  .category-section {
-    margin-top: -12px;
-  }
-
-  .category-grid {
-    gap: 8px;
-    padding: 9px;
-    border-radius: 12px;
-  }
-
-  .category-card {
-    min-height: 101px;
-    gap: 7px;
-    padding: 10px;
-  }
-
-  .category-icon {
-    width: 29px;
-    height: 29px;
-    font-size: 13px;
-  }
-
-  .category-info strong {
-    font-size: 10px;
-  }
-
-  .category-info small {
-    font-size: 8px;
-  }
-
   .library {
-    margin-top: 19px;
+    margin-top: 20px;
   }
 
   .section-header {
@@ -1378,19 +1215,6 @@ a:focus-visible {
   .hero-toolbar .primary-btn {
     padding-right: 8px;
     padding-left: 8px;
-    font-size: 9px;
-  }
-
-  .category-grid {
-    gap: 6px;
-    padding: 7px;
-  }
-
-  .category-card {
-    padding: 8px;
-  }
-
-  .category-info strong {
     font-size: 9px;
   }
 

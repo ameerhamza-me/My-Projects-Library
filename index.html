@@ -35,10 +35,6 @@
           <i class="fa-solid fa-plus"></i>
           <span>Add Resource</span>
         </button>
-        <button class="nav-item" type="button" onclick="document.getElementById('categorySection').scrollIntoView({behavior:'smooth'})">
-          <i class="fa-solid fa-folder-open"></i>
-          <span>Categories</span>
-        </button>
         <button class="nav-item" data-view="favorites" type="button">
           <i class="fa-regular fa-heart"></i>
           <span>Favorites</span>
@@ -55,10 +51,6 @@
       </div>
 
       <div class="sidebar-bottom">
-        <button class="nav-item settings-item" type="button">
-          <i class="fa-solid fa-gear"></i>
-          <span>Settings</span>
-        </button>
         <div class="sidebar-caption">
           <i class="fa-solid fa-seedling"></i>
           <span>Collect · Organize · Grow</span>
@@ -93,46 +85,6 @@
       </section>
 
       <div class="workspace-content">
-        <section class="category-section" id="categorySection">
-          <div class="category-grid">
-            <button class="category-card" type="button" data-filter="development" onclick="document.getElementById('categoryFilter').value=this.dataset.filter;document.getElementById('categoryFilter').dispatchEvent(new Event('change',{bubbles:true}));document.getElementById('resourceGrid').scrollIntoView({behavior:'smooth',block:'start'})">
-              <span class="category-icon icon-code"><i class="fa-solid fa-code"></i></span>
-              <span class="category-info">
-                <strong>Web Development</strong>
-                <small>Tools, docs, tutorials</small>
-              </span>
-              <i class="fa-solid fa-arrow-up-right-from-square category-arrow"></i>
-            </button>
-
-            <button class="category-card" type="button" data-filter="design" onclick="document.getElementById('categoryFilter').value=this.dataset.filter;document.getElementById('categoryFilter').dispatchEvent(new Event('change',{bubbles:true}));document.getElementById('resourceGrid').scrollIntoView({behavior:'smooth',block:'start'})">
-              <span class="category-icon icon-design"><i class="fa-solid fa-palette"></i></span>
-              <span class="category-info">
-                <strong>Design</strong>
-                <small>UI/UX, graphics, fonts</small>
-              </span>
-              <i class="fa-solid fa-arrow-up-right-from-square category-arrow"></i>
-            </button>
-
-            <button class="category-card" type="button" data-filter="tools" onclick="document.getElementById('categoryFilter').value=this.dataset.filter;document.getElementById('categoryFilter').dispatchEvent(new Event('change',{bubbles:true}));document.getElementById('resourceGrid').scrollIntoView({behavior:'smooth',block:'start'})">
-              <span class="category-icon icon-productivity"><i class="fa-solid fa-bolt"></i></span>
-              <span class="category-info">
-                <strong>Productivity</strong>
-                <small>Apps, tools, extensions</small>
-              </span>
-              <i class="fa-solid fa-arrow-up-right-from-square category-arrow"></i>
-            </button>
-
-            <button class="category-card" type="button" data-filter="Education" onclick="document.getElementById('categoryFilter').value=this.dataset.filter;document.getElementById('categoryFilter').dispatchEvent(new Event('change',{bubbles:true}));document.getElementById('resourceGrid').scrollIntoView({behavior:'smooth',block:'start'})">
-              <span class="category-icon icon-learning"><i class="fa-solid fa-book-open"></i></span>
-              <span class="category-info">
-                <strong>Learning</strong>
-                <small>Courses, docs, guides</small>
-              </span>
-              <i class="fa-solid fa-arrow-up-right-from-square category-arrow"></i>
-            </button>
-          </div>
-        </section>
-
         <section class="stats" aria-label="Resource statistics">
           <div class="stat-card">
             <span class="stat-icon sage"><i class="fa-solid fa-bookmark"></i></span>
@@ -157,7 +109,7 @@
           </div>
         </section>
 
-        <section class="library">
+        <section class="library" id="librarySection">
           <div class="section-header">
             <div class="section-heading-copy">
               <span class="section-kicker">YOUR PERSONAL COLLECTION</span>

@@ -422,3 +422,25 @@ function deleteResource(id) {
 }
 
 displayResources();
+
+
+
+Object.entries(localStorage).map(([key, value]) => {
+  let data;
+  try {
+    data = JSON.parse(value);
+  } catch {
+    data = null;
+  }
+
+  return {
+    key,
+    size: value.length,
+    type: Array.isArray(data) ? "array" : typeof data,
+    count: Array.isArray(data)
+      ? data.length
+      : data && typeof data === "object"
+        ? Object.keys(data).length
+        : "-"
+  };
+});
