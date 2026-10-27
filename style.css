@@ -628,10 +628,8 @@ a:focus-visible {
   line-height: 1.6;
   overflow-wrap: anywhere;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
 
-.category-tag {
+}.category-tag {
   align-self: flex-start;
   max-width: 100%;
   overflow-wrap: anywhere;
