@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090e1b">
+  <title>My Pojects Library</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <span>Resource<span class="accent">Hub</span></span>
+      </div>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="navigation">
+        <button class="nav-item active" data-view="all" type="button">
+          <i class="fa-solid fa-border-all"></i> All Resources
+        </button>
+        <button class="nav-item" data-view="favorites" type="button">
+          <i class="fa-regular fa-star"></i> Favorites
+        </button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Your personal resource library</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="breadcrumb">
+          <span>Workspace</span>
+          <i class="fa-solid fa-chevron-right"></i>
+          <strong>My Library</strong>
+        </div>
+        <div class="profile">
+          <div class="profile-avatar">RH</div>
+          <span>My Workspace</span>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="welcome">
+          <div>
+            <div class="eyebrow">
+              <i class="fa-solid fa-sparkles"></i> YOUR DIGITAL LIBRARY
+            </div>
+            <h1>Manage your <span>resources.</span></h1>
+            <p>Keep your favorite websites, tools and learning resources organized in one place.</p>
+          </div>
+          <button class="primary-btn" id="openModalBtn" type="button">
+            <i class="fa-solid fa-plus"></i> Add Resource
+          </button>
+        </section>
+
+        <section class="stats">
+          <div class="stat-card">
+            <div class="stat-icon purple"><i class="fa-solid fa-link"></i></div>
+            <div>
+              <p>Total Resources</p>
+              <h2 id="totalResources">0</h2>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange"><i class="fa-solid fa-star"></i></div>
+            <div>
+              <p>Favorites</p>
+              <h2 id="totalFavorites">0</h2>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue"><i class="fa-solid fa-folder-open"></i></div>
+            <div>
+              <p>Categories Used</p>
+              <h2 id="totalCategories">0</h2>
+            </div>
+          </div>
+        </section>
+
+        <section class="library">
+          <div class="section-header">
+            <div>
+              <h2 id="sectionTitle">All Resources</h2>
+              <p>Explore and manage your saved resources.</p>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchInput" placeholder="Search resources...">
+            </div>
+            <div class="filter-box">
+              <i class="fa-solid fa-filter"></i>
+              <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="development">Development</option>
+                <option value="design">Design</option>
+                <option value="tools">Tools</option>
+                <option value="Portfolio">Personal Portfolio</option>
+                <option value="Business Website">Business Website</option>
+                <option value="E-commerce">E-commerce / Online Store</option>
+                <option value="Blog">Blog / Personal Blog</option>
+                <option value="News & Magazine">News / Magazine</option>
+                <option value="Education">Education / Online Learning</option>
+                <option value="Gym & Fitness">Gym / Fitness</option>
+                <option value="Music & Audio">Music / Audio</option>
+                <option value="Video & Streaming">Video / Streaming</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Restaurant & Food">Restaurant / Food</option>
+                <option value="Travel & Tourism">Travel / Tourism</option>
+                <option value="Real Estate">Real Estate / Property</option>
+                <option value="Healthcare">Healthcare / Medical</option>
+                <option value="Finance">Finance / Banking</option>
+                <option value="SaaS & Web App">SaaS / Web Application</option>
+                <option value="Admin Dashboard">Admin Panel / Dashboard</option>
+                <option value="Productivity Tools">Productivity / Tools</option>
+                <option value="Technology & Development">Technology / Development</option>
+                <option value="Documentation & Tutorials">Documentation / Tutorials</option>
+                <option value="Photography & Gallery">Photography / Gallery</option>
+                <option value="Fashion & Beauty">Fashion / Beauty</option>
+                <option value="Events & Booking">Events / Booking</option>
+                <option value="Nonprofit & Charity">Nonprofit / Charity</option>
+                <option value="Landing Page">Landing Page</option>
+                <option value="Community & Forum">Community / Forum</option>
+                <option value="Jobs & Careers">Jobs / Careers</option>
+                <option value="Government">Government / Public Service</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="resource-grid" id="resourceGrid"></div>
+
+          <div class="empty-state" id="emptyState">
+            <div class="empty-icon"><i class="fa-solid fa-folder-open"></i></div>
+            <h3 id="emptyStateTitle">No resources found</h3>
+            <p id="emptyStateText">Your resources will appear here. Start by adding your first resource.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2>Add New Resource</h2>
+          <p>Save a useful website to your library.</p>
+        </div>
+        <button class="close-btn" id="closeModalBtn" type="button" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="resourceForm">
+        <div class="form-group">
+          <label for="resourceName">Resource Name</label>
+          <input type="text" id="resourceName" placeholder="e.g. My Portfolio" required>
+        </div>
+
+        <div class="form-group">
+          <label for="resourceUrl">Website URL</label>
+          <input type="text" id="resourceUrl" placeholder="example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="resourceCategory">Category</label>
+          <select id="resourceCategory" required>
+            <option value="" disabled selected>Select website type</option>
+            <option value="Portfolio">Personal Portfolio</option>
+            <option value="Business Website">Business Website</option>
+            <option value="E-commerce">E-commerce / Online Store</option>
+            <option value="Blog">Blog / Personal Blog</option>
+            <option value="News & Magazine">News / Magazine</option>
+            <option value="Education">Education / Online Learning</option>
+            <option value="Gym & Fitness">Gym / Fitness</option>
+            <option value="Music & Audio">Music / Audio</option>
+            <option value="Video & Streaming">Video / Streaming</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Restaurant & Food">Restaurant / Food</option>
+            <option value="Travel & Tourism">Travel / Tourism</option>
+            <option value="Real Estate">Real Estate / Property</option>
+            <option value="Healthcare">Healthcare / Medical</option>
+            <option value="Finance">Finance / Banking</option>
+            <option value="SaaS & Web App">SaaS / Web Application</option>
+            <option value="Admin Dashboard">Admin Panel / Dashboard</option>
+            <option value="Productivity Tools">Productivity / Tools</option>
+            <option value="Technology & Development">Technology / Development</option>
+            <option value="Documentation & Tutorials">Documentation / Tutorials</option>
+            <option value="Photography & Gallery">Photography / Gallery</option>
+            <option value="Fashion & Beauty">Fashion / Beauty</option>
+            <option value="Events & Booking">Events / Booking</option>
+            <option value="Nonprofit & Charity">Nonprofit / Charity</option>
+            <option value="Landing Page">Landing Page</option>
+            <option value="Community & Forum">Community / Forum</option>
+            <option value="Jobs & Careers">Jobs / Careers</option>
+            <option value="Government">Government / Public Service</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="resourceDescription">Description</label>
+          <textarea id="resourceDescription" rows="3" placeholder="What is this resource about?"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
+          <button type="submit" class="primary-btn">
+            <i class="fa-solid fa-plus"></i> Save Resource
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
