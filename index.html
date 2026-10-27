@@ -4,8 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090e1b">
-  <title>My Pojects Library</title>
+  <meta name="theme-color" content="#f5f1e5">
+  <meta name="description" content="ResourceHub — collect, organize and revisit your favorite digital resources.">
+  <title>ResourceHub — Your Resource Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
@@ -13,71 +17,139 @@
 <body>
   <div class="app">
     <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-icon"><i class="fa-solid fa-layer-group"></i></div>
-        <span>Resource<span class="accent">Hub</span></span>
-      </div>
-      <div class="sidebar-label">WORKSPACE</div>
-      <nav class="navigation">
+      <a href="#" class="brand" aria-label="ResourceHub home">
+        <span class="brand-icon"><i class="fa-solid fa-leaf"></i></span>
+        <span>ResourceHub</span>
+      </a>
+
+      <nav class="navigation" aria-label="Main navigation">
         <button class="nav-item active" data-view="all" type="button">
-          <i class="fa-solid fa-border-all"></i> All Resources
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </button>
+        <button class="nav-item" data-view="all" type="button">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>All Resources</span>
+        </button>
+        <button class="nav-item" type="button" onclick="document.getElementById('openModalBtn').click()">
+          <i class="fa-solid fa-plus"></i>
+          <span>Add Resource</span>
+        </button>
+        <button class="nav-item" type="button" onclick="document.getElementById('categorySection').scrollIntoView({behavior:'smooth'})">
+          <i class="fa-solid fa-folder-open"></i>
+          <span>Categories</span>
         </button>
         <button class="nav-item" data-view="favorites" type="button">
-          <i class="fa-regular fa-star"></i> Favorites
+          <i class="fa-regular fa-heart"></i>
+          <span>Favorites</span>
         </button>
       </nav>
+
+      <div class="sidebar-botanical" aria-hidden="true">
+        <span class="botanical-stem"></span>
+        <span class="botanical-leaf leaf-a"></span>
+        <span class="botanical-leaf leaf-b"></span>
+        <span class="botanical-leaf leaf-c"></span>
+        <span class="botanical-leaf leaf-d"></span>
+        <span class="botanical-leaf leaf-e"></span>
+      </div>
+
       <div class="sidebar-bottom">
-        <div class="sidebar-info">
-          <i class="fa-solid fa-circle-info"></i>
-          <span>Your personal resource library</span>
+        <button class="nav-item settings-item" type="button">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </button>
+        <div class="sidebar-caption">
+          <i class="fa-solid fa-seedling"></i>
+          <span>Collect · Organize · Grow</span>
         </div>
       </div>
     </aside>
 
     <main class="main">
-      <header class="topbar">
-        <div class="breadcrumb">
-          <span>Workspace</span>
-          <i class="fa-solid fa-chevron-right"></i>
-          <strong>My Library</strong>
+      <section class="hero">
+        <div class="hero-shade"></div>
+        <div class="hero-top-mark">
+          <span class="hero-mark-circle"><i class="fa-solid fa-leaf"></i></span>
         </div>
-        <div class="profile">
-          <div class="profile-avatar">RH</div>
-          <span>My Workspace</span>
-        </div>
-      </header>
 
-      <div class="content">
-        <section class="welcome">
-          <div>
-            <div class="eyebrow">
-              <i class="fa-solid fa-sparkles"></i> YOUR DIGITAL LIBRARY
-            </div>
-            <h1>Manage your <span>resources.</span></h1>
-            <p>Keep your favorite websites, tools and learning resources organized in one place.</p>
-          </div>
+        <div class="hero-copy">
+          <span class="eyebrow"><i class="fa-solid fa-seedling"></i> COLLECT · ORGANIZE · EXPLORE</span>
+          <h1>Your Resource Hub</h1>
+          <p>Save, organize and access your favorite resources all in one place.</p>
+        </div>
+
+        <div class="hero-toolbar">
+          <label class="search-box" for="searchInput">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search resources..." autocomplete="off">
+            <span class="search-shortcut">⌕</span>
+          </label>
           <button class="primary-btn" id="openModalBtn" type="button">
-            <i class="fa-solid fa-plus"></i> Add Resource
+            <i class="fa-solid fa-plus"></i>
+            Add Resource
           </button>
+        </div>
+      </section>
+
+      <div class="workspace-content">
+        <section class="category-section" id="categorySection">
+          <div class="category-grid">
+            <button class="category-card" type="button" data-filter="development" onclick="document.getElementById('categoryFilter').value=this.dataset.filter;document.getElementById('categoryFilter').dispatchEvent(new Event('change',{bubbles:true}));document.getElementById('resourceGrid').scrollIntoView({behavior:'smooth',block:'start'})">
+              <span class="category-icon icon-code"><i class="fa-solid fa-code"></i></span>
+              <span class="category-info">
+                <strong>Web Development</strong>
+                <small>Tools, docs, tutorials</small>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square category-arrow"></i>
+            </button>
+
+            <button class="category-card" type="button" data-filter="design" onclick="document.getElementById('categoryFilter').value=this.dataset.filter;document.getElementById('categoryFilter').dispatchEvent(new Event('change',{bubbles:true}));document.getElementById('resourceGrid').scrollIntoView({behavior:'smooth',block:'start'})">
+              <span class="category-icon icon-design"><i class="fa-solid fa-palette"></i></span>
+              <span class="category-info">
+                <strong>Design</strong>
+                <small>UI/UX, graphics, fonts</small>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square category-arrow"></i>
+            </button>
+
+            <button class="category-card" type="button" data-filter="tools" onclick="document.getElementById('categoryFilter').value=this.dataset.filter;document.getElementById('categoryFilter').dispatchEvent(new Event('change',{bubbles:true}));document.getElementById('resourceGrid').scrollIntoView({behavior:'smooth',block:'start'})">
+              <span class="category-icon icon-productivity"><i class="fa-solid fa-bolt"></i></span>
+              <span class="category-info">
+                <strong>Productivity</strong>
+                <small>Apps, tools, extensions</small>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square category-arrow"></i>
+            </button>
+
+            <button class="category-card" type="button" data-filter="Education" onclick="document.getElementById('categoryFilter').value=this.dataset.filter;document.getElementById('categoryFilter').dispatchEvent(new Event('change',{bubbles:true}));document.getElementById('resourceGrid').scrollIntoView({behavior:'smooth',block:'start'})">
+              <span class="category-icon icon-learning"><i class="fa-solid fa-book-open"></i></span>
+              <span class="category-info">
+                <strong>Learning</strong>
+                <small>Courses, docs, guides</small>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square category-arrow"></i>
+            </button>
+          </div>
         </section>
 
-        <section class="stats">
+        <section class="stats" aria-label="Resource statistics">
           <div class="stat-card">
-            <div class="stat-icon purple"><i class="fa-solid fa-link"></i></div>
+            <span class="stat-icon sage"><i class="fa-solid fa-bookmark"></i></span>
             <div>
               <p>Total Resources</p>
               <h2 id="totalResources">0</h2>
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon orange"><i class="fa-solid fa-star"></i></div>
+            <span class="stat-icon clay"><i class="fa-solid fa-heart"></i></span>
             <div>
               <p>Favorites</p>
               <h2 id="totalFavorites">0</h2>
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon blue"><i class="fa-solid fa-folder-open"></i></div>
+            <span class="stat-icon olive"><i class="fa-solid fa-folder-tree"></i></span>
             <div>
               <p>Categories Used</p>
               <h2 id="totalCategories">0</h2>
@@ -87,19 +159,13 @@
 
         <section class="library">
           <div class="section-header">
-            <div>
-              <h2 id="sectionTitle">All Resources</h2>
-              <p>Explore and manage your saved resources.</p>
+            <div class="section-heading-copy">
+              <span class="section-kicker">YOUR PERSONAL COLLECTION</span>
+              <h2 id="sectionTitle">Your Saved Resources</h2>
+              <p>Your favorite corners of the internet, gathered together.</p>
             </div>
-          </div>
-
-          <div class="toolbar">
-            <div class="search-box">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" id="searchInput" placeholder="Search resources...">
-            </div>
-            <div class="filter-box">
-              <i class="fa-solid fa-filter"></i>
+            <label class="filter-box" for="categoryFilter">
+              <i class="fa-solid fa-sliders"></i>
               <select id="categoryFilter">
                 <option value="all">All Categories</option>
                 <option value="development">Development</option>
@@ -136,29 +202,42 @@
                 <option value="Government">Government / Public Service</option>
                 <option value="Other">Other</option>
               </select>
-            </div>
+            </label>
           </div>
 
           <div class="resource-grid" id="resourceGrid"></div>
 
           <div class="empty-state" id="emptyState">
-            <div class="empty-icon"><i class="fa-solid fa-folder-open"></i></div>
-            <h3 id="emptyStateTitle">No resources found</h3>
-            <p id="emptyStateText">Your resources will appear here. Start by adding your first resource.</p>
+            <div class="empty-art">
+              <span class="empty-leaf"><i class="fa-solid fa-leaf"></i></span>
+              <span class="empty-bookmark"><i class="fa-regular fa-bookmark"></i></span>
+              <span class="empty-sprout"><i class="fa-solid fa-seedling"></i></span>
+            </div>
+            <h3 id="emptyStateTitle">Your collection starts here</h3>
+            <p id="emptyStateText">Save a website, tool or project and it will find a home in your personal library.</p>
+            <button class="empty-add-btn" id="emptyAddBtn" type="button" onclick="document.getElementById('openModalBtn').click()">
+              <i class="fa-solid fa-plus"></i> Add your first resource
+            </button>
           </div>
         </section>
+
+        <footer class="content-footer">
+          <span><i class="fa-solid fa-leaf"></i> A little more nature in your digital world.</span>
+          <span>ResourceHub <span class="footer-dot">•</span> Your personal library</span>
+        </footer>
       </div>
     </main>
   </div>
 
   <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modal-header">
         <div>
-          <h2>Add New Resource</h2>
-          <p>Save a useful website to your library.</p>
+          <span class="modal-kicker"><i class="fa-solid fa-seedling"></i> GROW YOUR COLLECTION</span>
+          <h2 id="modalTitle">Add New Resource</h2>
+          <p>Keep something useful close at hand.</p>
         </div>
-        <button class="close-btn" id="closeModalBtn" type="button" aria-label="Close">
+        <button class="close-btn" id="closeModalBtn" type="button" aria-label="Close dialog">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
@@ -212,8 +291,8 @@
         </div>
 
         <div class="form-group">
-          <label for="resourceDescription">Description</label>
-          <textarea id="resourceDescription" rows="3" placeholder="What is this resource about?"></textarea>
+          <label for="resourceDescription">Description <span>Optional</span></label>
+          <textarea id="resourceDescription" rows="3" placeholder="What makes this resource useful?"></textarea>
         </div>
 
         <div class="form-actions">
